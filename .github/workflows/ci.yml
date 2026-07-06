@@ -22,7 +22,7 @@ jobs:
             for goarch in amd64 arm64; do
               ext=""
               [ "$goos" = "windows" ] && ext=".exe"
-              GOOS=$goos GOARCH=$goarch go build -o "dist/file-sync_${goos}_${goarch}${ext}" .
+              CGO_ENABLED=0 GOOS=$goos GOARCH=$goarch go build -trimpath -o "dist/file-sync_${goos}_${goarch}${ext}" .
             done
           done
 
